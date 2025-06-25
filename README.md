@@ -38,20 +38,15 @@ Example document:
   "Status": "Present"
 }
 
-4. JavaScript Dashboard shows data
-Connects to Firestore using Firebase SDK
+### 4. JavaScript Dashboard shows data
+>Connects to Firestore using Firebase SDK
+>Displays real-time table on webpage
+>Updates instantly when Firestore changes
 
-Displays real-time table on webpage
-
-Updates instantly when Firestore changes
-
-🧪 Running the Dashboard Locally
-Copy index.html (provided in this repo)
-
-Paste your Firebase config from [Firebase Console > Project Settings > Web App]
-
-Double-click the HTML file to open in browser
-
+### 5. Running the Dashboard Locally
+>Copy index.html (provided in this repo)
+>Paste your Firebase config from [Firebase Console > Project Settings > Web App]
+>Double-click the HTML file to open in browser
 You’ll see a live-updating attendance table!
 
 🗂️ Folder Structure
