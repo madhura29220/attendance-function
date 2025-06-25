@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Dashboard</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h2 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #007BFF; color: white; }
+  </style>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDjtvhf3wRMAgWca6bXXUc3e1Pa3DQ5C0Y",
+    authDomain: "cloud-attendance-tracker-2025.firebaseapp.com",
+    projectId: "cloud-attendance-tracker-2025",
+    storageBucket: "cloud-attendance-tracker-2025.appspot.com",
+    messagingSenderId: "736668137544",
+    appId: "1:736668137544:web:46e34eb019a0770ffac07d",
+    measurementId: "G-21TM799S5H"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.getElementById("data");
+
+    onSnapshot(collection(db, "attendance"), (snapshot) => {
+      tableBody.innerHTML = "";
+      snapshot.forEach(doc => {
+        const { Name, Date, Status } = doc.data();
+        tableBody.innerHTML += `
+          <tr>
+            <td>${Name}</td>
+            <td>${Date}</td>
+            <td>${Status}</td>
+          </tr>
+        `;
+      });
+    });
+  });
+</script>
+
+</head>
+<body>
+  <h2>📊 Real-Time Attendance Dashboard</h2>
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Date</th><th>Status</th></tr>
+    </thead>
+    <tbody id="data"></tbody>
+  </table>
+</body>
+</html>
