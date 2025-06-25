@@ -58,3 +58,20 @@ gcs-function/
 ├── dashboard/
 │   └── index.html              # Real-time dashboard UI
 
+🔐 Firestore Rules (Dev Mode)
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /attendance/{docId} {
+      allow read: if true;        // Public read access for demo
+      allow write: if request.auth != null;
+    }
+  }
+}
+
+🧾 Example CSV Format
+
+Name,Date,Status
+Madhura,2025-06-25,Present
+Kunal,2025-06-25,Absent
